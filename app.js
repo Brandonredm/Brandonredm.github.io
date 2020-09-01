@@ -6,19 +6,19 @@ const getPokemon = () => {
 }
 
 //I want to be able to click on a button and have the text of the button be equal to const pokeselector
-const buttonClick = () => {
+//const buttonClick = () => {
   //I want this function to return the innertext/html of selected button
-  return 1
+//  return 1
 //});
-}
-
-const pokeSelector = buttonClick();
+//}
+//I used this so that pokeSelector is equal to what is returned by button click, so that it can enter the getPokemonData function
+//const pokeSelector = buttonClick();
 
 //////WRITING IN PROGRESS
 //const pokeSelector = "blastoise"
 
 
-const getPokemonData = () => {
+const getPokemonData = (pokeSelector) => {
   return $.ajax({
     url: 'https://pokeapi.co/api/v2/pokemon/' + pokeSelector
   })
@@ -52,14 +52,17 @@ getPokemon()
 // I want the pokemon to be clickable and give new info on click.
 ///Im thinking click will only work on original html
 $('body').on('click', (event)=>{
+  const pokeSelector = $(event.target).text();
   if ($(event.target).is('button')) {
-    console.log('yesss');
+    /// I want this to run buttonClick()
+    getPokemonData(pokeSelector)
+        .then((whatisreturned)=>{
+          console.log(whatisreturned)
+        });
+  //  console.log('yesss');
   }
 
-getPokemonData()
-    .then((whatisreturned)=>{
-      console.log(whatisreturned)
-    });
+
 //
 });
 })

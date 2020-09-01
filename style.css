@@ -7,5 +7,6 @@ div {
 }
 
 button {
+/* Reduce margin size but I still want adequate space */
   margin: 10px;
 }
