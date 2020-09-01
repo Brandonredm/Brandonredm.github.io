@@ -57,8 +57,11 @@ $('body').on('click', (event)=>{
     /// I want this to run buttonClick()
     getPokemonData(pokeSelector)
         .then((pokemonData)=>{
-          console.log(pokemonData)
-        //   const $pokemonRender = $('<')
+        const $imageURL = (pokemonData.sprites.front_default)
+        console.log(pokemonData)
+         const $pokemonImage = $('<img>')
+         $pokemonImage.attr('src', $imageURL)
+         $('.galar').append($pokemonImage)
         });
   //  console.log('yesss');
   }
