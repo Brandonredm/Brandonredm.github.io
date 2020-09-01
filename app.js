@@ -56,8 +56,9 @@ $('body').on('click', (event)=>{
   if ($(event.target).is('button')) {
     /// I want this to run buttonClick()
     getPokemonData(pokeSelector)
-        .then((whatisreturned)=>{
-          console.log(whatisreturned)
+        .then((pokemonData)=>{
+          console.log(pokemonData)
+        //   const $pokemonRender = $('<')
         });
   //  console.log('yesss');
   }

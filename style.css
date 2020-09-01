@@ -10,3 +10,14 @@ button {
 /* Reduce margin size but I still want adequate space */
   margin: 10px;
 }
+
+.galar {
+  background-color: black;
+  min-height: 10em;
+  width: 100%;
+  text-align: center;
+}
+
+p {
+  color: white;
+}
