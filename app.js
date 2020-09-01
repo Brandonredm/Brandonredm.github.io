@@ -55,6 +55,7 @@ $('body').on('click', (event)=>{
   const pokeSelector = $(event.target).text();
   if ($(event.target).is('button')) {
     /// I want this to run buttonClick()
+      $('.galar').empty();
     getPokemonData(pokeSelector)
         .then((pokemonData)=>{
         const $imageURL = (pokemonData.sprites.front_default)
