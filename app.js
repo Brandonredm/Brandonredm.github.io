@@ -53,7 +53,7 @@ getPokemon()
 ///Im thinking click will only work on original html
 $('body').on('click', (event)=>{
   const pokeSelector = $(event.target).text();
-  if ($(event.target).is('button')) {
+  if ($(event.target).is('button.pokebutton')) {
     /// I want this to run buttonClick()
       $('.galar').empty();
     getPokemonData(pokeSelector)
@@ -66,8 +66,17 @@ $('body').on('click', (event)=>{
         });
   //  console.log('yesss');
   }
+  $('body').on('click', (event) => {
+    const $modal = $('.modal');
+    if ($(event.target).is('img')) {
+    $modal.css("display", "block");
 
-
+    }
+  })
+  $('.modalclose').on('click', (event) => {
+    const $modal = $('.modal');
+    $modal.css("display", "none");
+  })
 //
 });
 })
