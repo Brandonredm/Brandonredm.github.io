@@ -1,7 +1,7 @@
 const getPokemon = () => {
 
   return $.ajax({
-    url: 'https://pokeapi.co/api/v2/pokemon'
+    url: 'https://pokeapi.co/api/v2/pokemon/?limit=26',
   })
 }
 
@@ -42,8 +42,57 @@ const placePokemonOnPage = (name) => {
   $(".container").append($pokemondiv)
 }
 
+const resetPokemon = () => {
+  $('.galar').empty();
+  $('.typeholder').empty();
+}
+
+const renderPokemon = (data) => {
+  const $imageURL = data.sprites.front_default
+  console.log(data)
+   const $pokemonImage = $('<img>')
+   $pokemonImage.attr('src', $imageURL)
+   $('.galar').append($pokemonImage)
+}
+
+const addTheTypeToTheModal = (pokemontype) => {
+  const $typeOfPokemon = $('<div>')
+  $typeOfPokemon.addClass('poketype')
+  //I need to grab the text of the type from the typearray
+  $typeOfPokemon.text(pokemontype.type.name);
+
+  $('.typeholder').append($typeOfPokemon)
 
 
+}
+
+const makePokemonTypeModal = (pokemonData) => {
+  const typeArray = pokemonData.types
+  typeArray.forEach((pokemontype, i) => {
+    addTheTypeToTheModal(pokemontype);
+    // const $typeOfPokemon = $('<div>')
+    // $typeOfPokemon.addClass('poketype')
+    // //I need to grab the text of
+    // $typeOfPokemon.text(pokemontype.type.name);
+    //
+    // $('.typeholder').append($typeOfPokemon)
+
+  });
+
+}
+
+const openModal = () => {
+  const $modal = $('.modal');
+  if ($(event.target).is('img')) {
+  $modal.css("display", "block");
+
+  }
+}
+
+const closeModal = () => {
+  const $modal = $('.modal');
+  $modal.css("display", "none");
+}
 
 $(() => {
 
@@ -57,40 +106,23 @@ $('body').on('click', (event)=>{
   const pokeSelector = $(event.target).text();
   if ($(event.target).is('button.pokebutton')) {
     /// I want this to run buttonClick()
-      $('.galar').empty();
-      $('.typeholder').empty();
+      // $('.galar').empty();
+      // $('.typeholder').empty();
+      resetPokemon();
     getPokemonData(pokeSelector)
         .then((pokemonData)=>{
-        const $imageURL = (pokemonData.sprites.front_default)
-        console.log(pokemonData)
-         const $pokemonImage = $('<img>')
-         $pokemonImage.attr('src', $imageURL)
-         $('.galar').append($pokemonImage)
+          renderPokemon(pokemonData);
 
-         const typeArray = pokemonData.types
-         typeArray.forEach((pokemontype, i) => {
-           const $typeOfPokemon = $('<div>')
-           $typeOfPokemon.addClass('poketype')
-           //I need to grab the text of
-           $typeOfPokemon.text(pokemontype.type.name);
-
-           $('.typeholder').append($typeOfPokemon)
-
-         });
+          makePokemonTypeModal(pokemonData);
 
         });
   //  console.log('yesss');
   }
   $('body').on('click', (event) => {
-    const $modal = $('.modal');
-    if ($(event.target).is('img')) {
-    $modal.css("display", "block");
-
-    }
+      openModal();
   })
   $('.modalclose').on('click', (event) => {
-    const $modal = $('.modal');
-    $modal.css("display", "none");
+      closeModal();
   })
 //
   });
