@@ -43,6 +43,8 @@ const placePokemonOnPage = (name) => {
 }
 
 
+
+
 $(() => {
 
 
@@ -56,6 +58,7 @@ $('body').on('click', (event)=>{
   if ($(event.target).is('button.pokebutton')) {
     /// I want this to run buttonClick()
       $('.galar').empty();
+      $('.typeholder').empty();
     getPokemonData(pokeSelector)
         .then((pokemonData)=>{
         const $imageURL = (pokemonData.sprites.front_default)
@@ -63,6 +66,18 @@ $('body').on('click', (event)=>{
          const $pokemonImage = $('<img>')
          $pokemonImage.attr('src', $imageURL)
          $('.galar').append($pokemonImage)
+
+         const typeArray = pokemonData.types
+         typeArray.forEach((pokemontype, i) => {
+           const $typeOfPokemon = $('<div>')
+           $typeOfPokemon.addClass('poketype')
+           //I need to grab the text of
+           $typeOfPokemon.text(pokemontype.type.name);
+
+           $('.typeholder').append($typeOfPokemon)
+
+         });
+
         });
   //  console.log('yesss');
   }
@@ -78,5 +93,5 @@ $('body').on('click', (event)=>{
     $modal.css("display", "none");
   })
 //
-});
+  });
 })

@@ -18,8 +18,12 @@ button {
   text-align: center;
 }
 
-p {
-  color: white;
+h1 {
+  font-size: 18px;
+  text-align:center;
+  border: solid gold 1px;
+  background-color: azure;
+
 }
 
 .modal {
@@ -38,5 +42,14 @@ p {
 }
 
 span {
-  
+  font-size: 22px;
+}
+
+.poketype {
+  display: block;
+  margin: 10px;
+  border: solid black 1px;
+  background-color: lightblue;
+  padding-right: 14px;
+  padding-bottom: 2px;
 }
