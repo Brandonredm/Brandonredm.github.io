@@ -1,5 +1,5 @@
 body {
-  background-color: azure;
+  background-image: url('background.jpg');
 }
 
 div {
@@ -9,13 +9,23 @@ div {
 button {
 /* Reduce margin size but I still want adequate space */
   margin: 10px;
+  font-size: 19px;
 }
-
+img {
+  height: 50%;
+  width: 50%;
+}
 .galar {
-  background-color: black;
-  min-height: 10em;
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 12em;
+  width: 40%;
   text-align: center;
+  background-image: url('yep.png');
+  background-size: cover;
+  display: block;
+  border: solid gray 3px;
+  border-radius: 5px;
 }
 
 h1 {
@@ -23,7 +33,6 @@ h1 {
   text-align:center;
   border: solid gold 1px;
   background-color: azure;
-
 }
 
 .modal {
@@ -33,14 +42,17 @@ h1 {
   background-color: lightgray;
   border-radius: 8px;
   border: solid black 1px;
-  border-color: black;
   top: 50%;
   left: 50%;
   margin-top: -100px;
   margin-left: -100px;
   display:  none;
 }
-
+button {
+  border-radius: 4px;
+  background-color: gold;
+  color: blue;
+}
 span {
   font-size: 22px;
 }
@@ -49,7 +61,20 @@ span {
   display: block;
   margin: 10px;
   border: solid black 1px;
-  background-color: lightblue;
+  background-color: gold;
   padding-right: 14px;
   padding-bottom: 2px;
+  padding-left: 4px;
+}
+
+@media (max-width: 760px) {
+  button {
+    display: block;
+  }
+  .galar {
+    float: right;
+    position: fixed;
+    top: 150px;
+    right: 100px;
+  }
 }
