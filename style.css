@@ -18,7 +18,8 @@ img {
 .galar {
   margin-left: auto;
   margin-right: auto;
-  min-height: 12em;
+  margin-top: 100px;
+  min-height: 17em;
   width: 40%;
   text-align: center;
   background-image: url('yep.png');
@@ -44,8 +45,6 @@ h1 {
   border: solid black 1px;
   top: 50%;
   left: 50%;
-  margin-top: -100px;
-  margin-left: -100px;
   display:  none;
 }
 button {
@@ -76,5 +75,9 @@ span {
     position: fixed;
     top: 150px;
     right: 100px;
+    margin-top: auto;
+  }
+  img {
+    margin-top: 40px;
   }
 }
